@@ -9,4 +9,5 @@ for port in {6401..6406}; do
 	fi
 	cluster_server="${cluster_server}${ip}:${port}"
 done
-docker run -it -d -p 6688:7777 --net redis-net --name redis-cluster-proxy redis-cluster-proxy:v1 redis-cluster-proxy -a GqdLSFUhnm6MpyeVKIu3 ${cluster_server}
+# 对外6379以单节点方式使用
+docker run -it -d -p 6379:7777 --net redis-net --name redis-cluster-proxy redis-cluster-proxy:v1 redis-cluster-proxy -a GqdLSFUhnm6MpyeVKIu3 ${cluster_server}

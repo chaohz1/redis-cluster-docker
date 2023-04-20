@@ -1,4 +1,8 @@
+# 使用本机网卡IP
 ip=$(ifconfig -a | grep inet | grep -v 127.0.0.1 | grep -v inet6 | awk '{print $2}' | tr -d "addr:" | grep 192 | head -n 1)
+# Docker网桥IP
+#ip=$(ifconfig -a | grep docker -A 2 | grep inet | grep -v inet6 | awk '{print $2}')
+
 mkdir -p /home/redis/twemproxy/conf
 touch /home/redis/twemproxy/conf/nutcracker.conf
 sudo chmod 644 /home/redis/twemproxy/conf/nutcracker.conf
