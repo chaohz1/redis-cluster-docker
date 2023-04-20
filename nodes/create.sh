@@ -29,7 +29,6 @@ done
 echo "===== Config Done ====="
 
 #### Docker #####
-
 # 清理
 for port in {6401..6406}; do
 	docker container stop redis-${port}
@@ -37,7 +36,6 @@ for port in {6401..6406}; do
 done
 docker network rm redis-net
 echo "===== Clean Done ====="
-
 # 创建
 docker network create redis-net
 for port in {6401..6406}; do
@@ -53,15 +51,13 @@ done
 echo "===== Container Done ====="
 
 #### 集群注册 #####
-
-# 集群绑定
 pwd=GqdLSFUhnm6MpyeVKIu3
 cluster_server=""
 for port in {6401..6406}; do
 	if [[ "${cluster_server}" ]]; then
-		${cluster_server}="${cluster_server} "
+		cluster_server="${cluster_server} "
 	fi
-	${cluster_server}="${cluster_server}${ip}:${port}"
+	cluster_server="${cluster_server}${ip}:${port}"
 done
 echo "cluster_server = ${cluster_server}"
 docker exec -i redis-6401 /bin/bash -c "redis-cli -a ${pwd} --cluster create ${cluster_server} --cluster-replicas 1"
