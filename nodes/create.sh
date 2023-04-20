@@ -6,7 +6,6 @@ ip=$(ifconfig -a | grep inet | grep -v 127.0.0.1 | grep -v inet6 | awk '{print $
 #ip=$(ifconfig -a | grep docker -A 2 | grep inet | grep -v inet6 | awk '{print $2}')
 echo "===== IP ${ip} ====="
 
-
 for port in {6401..6406}; do
 	mkdir -p /home/redis/node-${port}/conf
 	touch /home/redis/node-${port}/conf/redis.conf
@@ -64,6 +63,6 @@ for port in {6401..6406}; do
 	fi
 	${cluster_server}="${cluster_server}${ip}:${port}"
 done
-docker exec -i redis-6401 /bin/bash -c "redis-cli -a ${pwd} --cluster create ${cluster_server} -a ${pwd} --cluster-replicas 1"
+echo "cluster_server = ${cluster_server}"
+docker exec -i redis-6401 /bin/bash -c "redis-cli -a ${pwd} --cluster create ${cluster_server} --cluster-replicas 1"
 echo "===== Bind Done ====="
-
