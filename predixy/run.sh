@@ -1,3 +1,4 @@
-docker stop redis-predixy
-docker rm redis-predixy
-docker run -it -d -p 6379:7617 --net redis-net --name redis-predixy redis-predixy -v $(pwd)/conf:/conf predixy conf/predixy.conf
+container_name="redis-predixy"
+docker stop ${container_name}
+docker rm ${container_name}
+docker run -it -d -p 6379:7617 --net redis-net --name ${container_name} -v $(pwd)/conf:/conf redis-predixy:0421 predixy conf/predixy.conf
