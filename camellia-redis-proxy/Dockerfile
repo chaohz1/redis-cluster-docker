@@ -1,4 +1,4 @@
-FROM openjdk:21-jdk-oraclelinux8
+FROM openjdk:8-jdk-alpine
 WORKDIR /tmp
 # wget https://github.com/netease-im/camellia/releases/download/1.2.5/camellia-redis-proxy-1.2.5.tar.gz
 COPY camellia-redis-proxy-1.2.5.tar.gz ./
