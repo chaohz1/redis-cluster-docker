@@ -26,7 +26,7 @@ camellia-redis-proxy:
 #    "dynamic.conf.file.name": "xxx.properties"
 #    "xxx": "yyy"
   transpond:
-    type: local #local、remote、custom
+    type: remote #local、remote、custom
     local:
       type: simple #simple、complex
       resource: redis-cluster://@192.168.0.242:6401,192.168.0.242:6402,192.168.0.242:6403,192.168.0.242:6404,192.168.0.242:6405,192.168.0.242:6406 #target transpond redis address
