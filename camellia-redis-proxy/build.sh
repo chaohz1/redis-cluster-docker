@@ -1,0 +1,1 @@
+docker build -t camellia-redis-proxy:1.2.5 .
