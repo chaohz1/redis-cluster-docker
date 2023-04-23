@@ -6,6 +6,6 @@ RUN tar zxvf camellia-redis-proxy-1.2.5.tar.gz \
 && mkdir -p /apps/camellia-redis-proxy \
 && cp -a camellia-redis-proxy-1.2.5/. /apps/camellia-redis-proxy \
 && rm -rf /tmp
-WORKDIR /camellia-redis-proxy
+WORKDIR /apps/camellia-redis-proxy
 EXPOSE 6380
 EXPOSE 16379
