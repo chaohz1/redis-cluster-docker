@@ -24,8 +24,9 @@ cluster-node-timeout 5000
 cluster-announce-ip  ${ip}
 cluster-announce-port ${port}
 cluster-announce-bus-port 1${port}
-# 解决关于SpringBoot启动会调用【Config SET Egx】，但是Proxy服务报错【command 'CONFIG' only support GET】
-notify-keyspace-events EA 
+# 方案1：解决关于SpringBoot启动会调用【Config SET Egx】，但是Proxy服务报错【command 'CONFIG' only support GET】
+# 方案2：从Proxy层解决问题，所以Redis-Server本身不需要开启
+# notify-keyspace-events EA 
 EOF
 done
 echo "===== Config Done ====="
